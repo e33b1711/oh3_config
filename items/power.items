@@ -1,0 +1,26 @@
+Group power  (all)
+
+//pure display values
+Number  grid_power              "Grid Power [%.1f W]"                      <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:grid_power",               autoupdate="false"}
+Number  solar_power             "Solar Power [%.1f W]"                     <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:solar_power",              autoupdate="false"}
+Number  battery_power           "Battery Power [%.1f W]"                   <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:battery_power",            autoupdate="false"}
+Number  loads_power             "Loads Power [%.1f W]"                     <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:loads_power",              autoupdate="false"}
+Number  criticial_loads_power   "Critical Loads Power Power [%.1f W]"      <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:criticial_loads_power",    autoupdate="false"}
+Number  charger_power           "Charger Power [%.1f W]"                   <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:charger_power",            autoupdate="false"}
+Number  victron_connected       "victron connected: [%d]"                                   (power)    { channel="mqtt:topic:mosquitto:power_control:victron_connected",        autoupdate="false"}
+Number  victron_status          "victron status: [%d]"                                      (power)    { channel="mqtt:topic:mosquitto:power_control:victron_status",           autoupdate="false"}
+Number  state_of_charge         "State of Charge: [%.0f %%]"               <batterylevel>   (power)    { channel="mqtt:topic:mosquitto:power_control:state_of_charge",          autoupdate="false"}
+Number  charger_connected       "charger connected: [%d]"                                   (power)    { channel="mqtt:topic:mosquitto:power_control:charger_connected",        autoupdate="false"}
+Number  charger_status          "charger status: [%d]"                                      (power)    { channel="mqtt:topic:mosquitto:power_control:charger_status",           autoupdate="false"}
+
+
+//control
+Switch  solar2heat              "Solar2Heat"                                                (power)    { channel="mqtt:topic:mosquitto:power_control:solar2heat",               autoupdate="false"}
+Switch  solar2car               "Solar2Car"                                                 (power)    { channel="mqtt:topic:mosquitto:power_control:solar2car",                autoupdate="false"}
+Number  charger_setpoint        "Charger setpoint [%d A]"                  <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:charger_setpoint",         autoupdate="false"}
+
+//over arduino nodes
+Number  TI_PU_O                 "Temperature (Top)    [%.1f °C]"           <temperature>    (power)    { channel="mqtt:topic:mosquitto:power_control:TI_PU_O",                  autoupdate="false"}
+Number  TI_PU_U                 "Temperature (Middle) [%.1f °C]"           <temperature>    (power)    { channel="mqtt:topic:mosquitto:power_control:TI_PU_U",                  autoupdate="false"}
+Number  U_EL                    "Heating Setpoint [%.1f]"                  <pressure>       (power)    { channel="mqtt:topic:mosquitto:power_control:U_EL",                     autoupdate="false"} 
+

@@ -1,0 +1,30 @@
+Group all
+Group EG      (all)
+Group OG      (all)
+Group UG      (all)
+Group A       (all)
+Group GR      (all)
+Group CH      (all)
+
+Group SunsetLights          "used in rule SunsetLights"
+Group AlwaysTimer           "used in timer rule"
+Group ChickenOuterLights    "Hühner-Haus Zeitsteuerung" 	    <bath> 			(Aussen)
+
+Group EG_WZ                 "Wohnzimmer"                        <video>         (EG)
+Group EG_KU                 "Küche"                             <kitchen>       (EG)
+Group EG_EZ                 "Esszimmer"                         <kitchen>       (EG)
+Group EG_GA                 "Gang"                              <corridor>      (EG)
+Group EG_GR                 "Gardarobe"                         <video>         (EG)
+Group EG_WC                 "WC"                                <bath>          (EG)
+                            
+Group OG_BA                 "Badezimmer"                        <bath>          (OG)
+Group OG_KN                 "Leos Zimmer"                       <boy2>          (OG)
+Group OG_KS                 "Kurbis Zimmer"                     <boy1>          (OG)
+Group OG_SZ                 "Schlafzimmer"                      <bedroom>       (OG)
+Group OG_GA                 "Gang"                              <corridor>      (OG)
+                            
+Group UG_HO                 "Hobbyraum"                         <office>        (UG)
+Group UG_WK                 "Waschküche"                        <bath>          (UG)
+Group UG_HK                 "Heizkeller"                        <bath>          (UG)
+Group UG_GA                 "Gang"                              <corridor>      (UG)
+Group UG_LA                 "Lager"                             <corridor>      (UG)

@@ -1,0 +1,114 @@
+sitemap gruen5 label="Lichter / Verdunkelung"
+{
+	
+Text label="Keller" icon="cellar" {
+		Switch item=LI_UG_HO
+		Switch item=LI_UG_HN
+		Switch item=LI_UG_GA
+		Switch item=LI_UG_WK 
+		Switch item=LI_UG_HK
+        Switch item=LI_UG_TR
+}
+
+Text label="Erdgeschoss" icon="groundfloor" {
+	Frame label="Küche"  {
+		Switch item=LI_EG_KU_L1
+		Switch item=LI_EG_EZ_KU
+		Switch item=LI_EG_SP
+	}
+	Frame label="Wohnzimmer"  {
+		Switch item=LI_EG_WZ 	
+		Switch item=LI_EG_WZ_L1 
+		Switch item=LI_EG_WZ_L2 
+	}
+	Frame label="Esszimmer"  {
+		Switch item=LI_EG_EZ 	
+		Switch item=LI_EG_EZ_L1 
+		Switch item=LI_EG_EZ_L3 
+		Switch item=LI_EG_EZ_KU 
+		Switch item=RO_EG_SU
+		Switch item=RO_EG_WE
+	}
+	Frame label="Gang"  {
+		Switch item=LI_EG_GA 	
+		Switch item=LI_GA_L1 
+		Switch item=BELL	
+	}
+	Frame label="WC"  {
+		Switch item=LI_EG_WC
+	}
+	Frame label="Gardarobe"  {
+		Switch item=LI_EG_GR 
+	}
+	}
+	
+
+	
+	Text label="Obergeschoss" icon="firstfloor" {
+		Frame label="Makros"  {
+		Switch item=VD_OG
+		}
+		Frame label="Kurbis Zimmer"  {
+			Switch item=LI_OG_KS 	
+			Switch item=LI_OG_KS_L1
+			Switch item=RO_OG_KS
+			Switch item=VD_OG_KS
+			Switch item=DF_OG_KS
+            }
+        Frame label="Leos Zimmer"  {
+        	Switch item=LI_OG_KN 
+			Switch item=LI_OG_KN_L1 
+			Switch item=RO_OG_KN
+			Switch item=VD_OG_KN
+			Switch item=DF_OG_KN
+			Switch item=sonoff_basic_01_power
+            }
+         Frame label="Bad"  {
+         	Switch item=LI_OG_BA 
+			Switch item=RO_OG_BA
+            }
+         Frame label="Schlafzimmer"  {
+         	Switch item=LI_OG_SZ 	
+			Switch item=LI_OG_SZ_L1
+			Switch item=LI_OG_SZ_L2
+			Switch item=RO_OG_SZ
+			Switch item=VD_OG_SZ
+			Switch item=DF_OG_SZ
+
+            }
+         Frame label="Gang"  {
+         	Switch item=LI_OG_GA 	
+			Switch item=LI_OG_GA_L1 
+			Switch item=DF_OG_GA
+            }
+}
+Text label="Garage / Aussen" icon="garage_detached_selected" {
+	 Frame label="Garage"  {
+        	Switch item=LI_GR 
+		Switch item=LI_GR_L1
+		Switch item=ZE_GR_0
+		Switch item=ZE_GR_1
+		Switch item=ZE_GR_2
+		Switch item=DO_GR
+            }
+     Frame label="Garten"  {
+         	Switch item=LI_EG_AS 
+		Switch item=LI_EG_AW 	
+		Switch item=LI_EG_AO
+		Switch item=PUMP
+            }
+     Frame label="Vorhaus"  {
+		Switch item=LI_EG_VH
+ 		Switch item=ZE_EG_VH
+            }
+     Frame label="Hühner-Haus"  {
+		Switch item=LI_CH
+                Switch item=DO_CH
+		Switch item=LI_CH_L2
+		Switch item=LI_CH_L3
+            }
+         }
+		
+}
+
+
