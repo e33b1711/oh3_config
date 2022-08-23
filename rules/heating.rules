@@ -1,0 +1,238 @@
+import org.eclipse.smarthome.core.library.types.DecimalType
+import org.eclipse.smarthome.model.script.ScriptServiceUtil
+
+
+
+rule Sommer
+when
+    Item Sommerbetrieb received update ON
+then
+    heat_setpoint.members.forEach [ item |
+        item.sendCommand(0)    
+    ]
+end
+
+rule Winter
+when
+    Item Sommerbetrieb received update OFF
+then
+    heat_setpoint.members.forEach [ item |
+        item.sendCommand(8)    
+    ]
+end
+    
+    
+
+
+//rule HeatingControlerRule
+//when
+//    Time cron "0 0/10 * * * ?"
+//then
+//    heizung_stellwert.members.forEach [ item |
+//        //get base name
+//        //logInfo("HeatingControllerRule: item.name:", item.name)
+//        val String item_base_name = item.name.substring(1,7)
+//        //logInfo("HeatingControllerRule", "item_base_name: >>" + item_base_name + "<<")
+//        
+//    	//get input values
+//		var Number temp_ist = ScriptServiceUtil.getItemRegistry.getItem("TI" + item_base_name).state as DecimalType
+//		//logInfo("HeatingControllerRule", "temp_ist: " + temp_ist.toString())
+//
+//		var Number temp_soll = ScriptServiceUtil.getItemRegistry.getItem("TS" + item_base_name).state as DecimalType
+//		//logInfo("HeatingControllerRule", "temp_soll: " + temp_soll.toString())
+//
+//		var Number u_default = ScriptServiceUtil.getItemRegistry.getItem("UD" + item_base_name).state as DecimalType
+//		//logInfo("HeatingControllerRule", "u_default: " + u_default.toString())  
+//		
+//		var Number s_error = ScriptServiceUtil.getItemRegistry.getItem("ETI" + item_base_name).state as DecimalType
+//		//logInfo("HeatingControllerRule", "s_error: " + s_error.toString())
+//
+//		//control algorithm
+//		var Number u_nxt=0;
+//		u_nxt=u_default;
+//		var temp_diff = temp_ist - temp_soll
+//		//logInfo("HeatingControllerRule", "temp_diff: " + temp_diff.toString())
+//        if((temp_ist<1) || (temp_ist>35) || (s_error != 0)){
+//        	u_nxt=u_default
+//        }else{
+//			if (temp_diff>1){u_nxt=0.0}
+//			if (temp_diff<-1){u_nxt=15.0}
+//	    }
+//        if(Sommerbetrieb.state==ON){u_nxt=0}
+//		//logInfo("HeatingControllerRule", "u_nxt: " + u_nxt.toString())
+//	
+//        //postUpdate
+//        item.postUpdate(u_nxt)
+//    ]
+//end
+//
+///*
+//rule HeatingControlerRule2
+//when
+//    Time cron "0 0/1 * * * ?"
+//then
+//    	val item = ScriptServiceUtil.getItemRegistry.getItem("U_OG_BA")
+//        //get base name
+//        //logInfo("HeatingControllerRule: item.name:", item.name)
+//        val String item_base_name = item.name.substring(1,7)
+//        //logInfo("HeatingControllerRule", "item_base_name: >>" + item_base_name + "<<")
+//        
+//        //get input values
+//	val temp_ist = ScriptServiceUtil.getItemRegistry.getItem("TI" + item_base_name).state as DecimalType
+//	//logInfo("HeatingControllerRule", "temp_ist: " + temp_ist.toString())
+//
+//        val temp_soll = ScriptServiceUtil.getItemRegistry.getItem("TS" + item_base_name).state as DecimalType
+//	//logInfo("HeatingControllerRule", "temp_soll: "+ temp_soll.toString())
+//
+//        val u_default = ScriptServiceUtil.getItemRegistry.getItem("UD" + item_base_name).state as DecimalType
+//	//logInfo("HeatingControllerRule", "u_default: "+ u_default.toString())
+//      
+//	val s_error = ScriptServiceUtil.getItemRegistry.getItem("ETI" + item_base_name).state as DecimalType
+//       	logInfo("HeatingControllerRule", "s_error: "+ s_error.toString())
+//
+//        //control algorithm
+//        val u_nxt=u_default;
+//	val temp_diff = temp_ist - temp_soll
+//	//logInfo("HeatingControllerRule", "temp_diff: "+ temp_diff.toString())
+//        if((temp_ist<1) || (temp_ist>35) || (s_error != 0)){
+//        	u_nxt=u_default
+//        }else{
+//		if (temp_diff>1){u_nxt=0}
+//		if (temp_diff<-1){u_nxt=15}
+//	    }
+//        if(Sommerbetrieb.state==ON){u_nxt=0}
+//	//logInfo("HeatingControllerRule", "u_nxt: " + u_nxt.toString())
+//
+//        //postUpdate
+//        item.postUpdate(u_nxt)
+//end
+//*/
+//
+//
+//rule CalcTempUgRule
+//when
+//	Item TI_UG_HS received update or
+//	Item TI_UG_HN received update
+//then
+//	var mean_temp=((TI_UG_HN.state as Number)+(TI_UG_HS.state as Number))/2
+//	if (!(ETI_UG_HN.state==0)){
+//		 mean_temp=((TI_UG_HS.state as Number))+0
+//	}
+//	if (!(ETI_UG_HS.state==0)){
+//		mean_temp=((TI_UG_HN.state as Number))+0
+//	}
+//	if ((ETI_UG_HN.state==0) && !(ETI_UG_HN.state==0)) {
+//		ETI_UG_H1.postUpdate(1)
+//		ETI_UG_H2.postUpdate(1)
+//		ETI_UG_H3.postUpdate(1)
+//	}else{
+//		ETI_UG_H1.postUpdate(0)
+//		ETI_UG_H2.postUpdate(0)
+//		ETI_UG_H3.postUpdate(0)
+//
+//	}
+//	TI_UG_H1.postUpdate(mean_temp)
+//	TI_UG_H2.postUpdate(mean_temp)
+//	TI_UG_H3.postUpdate(mean_temp)
+//	logInfo("CalcTempUgRule: mean temp hobby:", mean_temp.toString())
+//end
+//
+//
+//rule CalcTempEgRule
+//when
+//	Item TI_UG_GA received update or
+//	Item TI_EG_EZ received update
+//then
+//	var temp=TI_EG_GA.state as Number
+//	TI_EG_GR.postUpdate(temp)
+//	TI_EG_WC.postUpdate(temp)
+//	//logInfo("CalcTempEgRule: temp ga:", temp.toString())
+//	temp=TI_EG_EZ.state as Number
+//	TI_EG_E1.postUpdate(temp)
+//	TI_EG_E2.postUpdate(temp)
+//	//logInfo("CalcTempEgRule: temp ez:", temp.toString())
+//end
+//
+//
+//rule RuleUpdateSetpoints
+//when
+//	Member of heizung_stellwert received command
+//then
+//	//logInfo("RuleUpdateSetpoints", "The item " + triggeringItem.name + " received update " + triggeringItem.state)
+//	val message = "!c!" + triggeringItem.name + String::format("!%1$01d$\n",(triggeringItem.state as DecimalType).intValue)
+//	sendCommand(RS485_Gateway_out, message)  
+//	//logInfo("RuleUpdateSetpoints", message)
+//end
+//
+//
+//rule InitHeating
+//when
+//    System started
+//then
+// 	Sommerbetrieb.postUpdate(OFF)
+//
+// 	UD_UG_H1.postUpdate(2)
+// 	UD_UG_H2.postUpdate(2)
+// 	UD_UG_H3.postUpdate(2)
+// 	UD_UG_LA.postUpdate(0)
+// 	UD_UG_GA.postUpdate(0) 
+// 	UD_UG_WK.postUpdate(15)
+// 
+// 	UD_EG_KU.postUpdate(4)
+// 	UD_EG_E1.postUpdate(4)
+// 	UD_EG_E2.postUpdate(4)
+// 	UD_EG_GA.postUpdate(0)
+// 	UD_EG_WZ.postUpdate(4)
+// 	UD_EG_GR.postUpdate(2)
+// 	UD_EG_WC.postUpdate(2)
+// 
+// 	UD_OG_KS.postUpdate(4)
+// 	UD_OG_KN.postUpdate(6)
+// 	UD_OG_GA.postUpdate(0)
+// 	UD_OG_BA.postUpdate(15)
+// 	UD_OG_SZ.postUpdate(0)
+// 
+//	TS_EG_WZ.postUpdate(22)
+//	TS_EG_KU.postUpdate(22) 	
+// 	TS_EG_E1.postUpdate(22)
+//	TS_EG_E2.postUpdate(22)
+// 	TS_EG_GA.postUpdate(20)
+//	TS_EG_GR.postUpdate(20)
+// 	TS_EG_WC.postUpdate(20)	
+//
+//	TS_OG_BA.postUpdate(24) 	
+//	TS_OG_KN.postUpdate(20) 	
+//	TS_OG_KS.postUpdate(20) 	
+//	TS_OG_SZ.postUpdate(15) 	
+//	TS_OG_GA.postUpdate(20) 	
+//
+//	TS_UG_H1.postUpdate(20)
+//	TS_UG_H2.postUpdate(20) 
+//	TS_UG_H3.postUpdate(20) 		
+//	TS_UG_WK.postUpdate(24) 	
+//	TS_UG_GA.postUpdate(20) 	
+//	TS_UG_LA.postUpdate(20)
+//
+//	//this needs to go
+//	ETI_UG_H1.postUpdate(0)
+//	ETI_UG_H2.postUpdate(0)
+//	ETI_UG_H3.postUpdate(0)
+//	ETI_EG_E1.postUpdate(0)
+//	ETI_EG_E2.postUpdate(0)
+//	ETI_EG_GR.postUpdate(0)
+//	ETI_EG_WC.postUpdate(0)
+//  	
+//end
+
+
+
+
+
+
+
+
+
+
+
+
+
