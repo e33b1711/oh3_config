@@ -9,6 +9,7 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type number : battery_power         "battery_power"         [ stateTopic="power_state/battery_power"                                                                ]
         Type number : loads_power           "loads_power"           [ stateTopic="power_state/loads_power"                                                                  ]
         Type number : criticial_loads_power "criticial_loads_power" [ stateTopic="power_state/criticial_loads_power"                                                        ]
+        Type number : ess_setpoint          "ess_setpoint"          [ stateTopic="power_state/ess_setpoint"                                                                 ]
         Type number : charger_power         "charger_power"         [ stateTopic="power_state/charger_power"                                                                ]
         Type number : charger_setpoint      "charger_setpoint"      [ stateTopic="power_state/charger_setpoint"           , commandTopic="power_command/charger_setpoint"   ]       
         Type number : victron_connected     "victron_connected"     [ stateTopic="power_state/victron_connected"                                                            ]
@@ -18,9 +19,11 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type number : charger_status        "charger_status"        [ stateTopic="power_state/charger_status"                                                               ]
         Type switch : solar2heat            "solar2heat"            [ stateTopic="power_state/solar2heat"                 , commandTopic="power_command/solar2heat"         ]
         Type switch : solar2car             "solar2car"             [ stateTopic="power_state/solar2car"                  , commandTopic="power_command/solar2car"          ]
+        Type switch : charging              "charging"              [ stateTopic="power_state/charging"                   , commandTopic="power_command/charging"           ]
+        Type number : car_connected         "car_connected"         [ stateTopic="power_state/car_connected"                                                                ]
         Type number : U_EL                  "U_EL"                  [ stateTopic="ard_state/U_EL"                         , commandTopic="ard_command/U_EL"                 ]
-        Type number : TI_PU_O               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_U"                                                                        ]
-        Type number : TI_PU_U               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_O"                                                                        ]
+        Type number : TI_PU_O               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_O"                                                                        ]
+        Type number : TI_PU_U               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_U"                                                                        ]
     }
 
     Thing topic arduino_lights "Arduino Lights" @ "debug" {
@@ -55,6 +58,7 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type switch : LI_UG_HN      "LI_UG_HN"       [ stateTopic="ard_state/LI_UG_HN"     ,commandTopic="ard_command/LI_UG_HN"     , on="1", off="0"  ]
         Type switch : LI_UG_TR      "LI_UG_TR"       [ stateTopic="ard_state/LI_UG_TR"     ,commandTopic="ard_command/LI_UG_TR"     , on="1", off="0"  ]
         Type switch : LI_EG_VH      "LI_EG_VH"       [ stateTopic="ard_state/LI_EG_VH"     ,commandTopic="ard_command/LI_EG_VH"     , on="1", off="0"  ]
+        Type switch : ZE_EG_VH      "LI_EG_VH"       [ stateTopic="ard_state/ZE_EG_VH"     ,commandTopic="ard_command/ZE_EG_VH"     , on="1", off="0"  ]
         Type switch : LI_EG_AS      "LI_EG_AS"       [ stateTopic="ard_state/LI_EG_AS"     ,commandTopic="ard_command/LI_EG_AS"     , on="1", off="0"  ]
         Type switch : LI_EG_AW      "LI_EG_AW"       [ stateTopic="ard_state/LI_EG_AW"     ,commandTopic="ard_command/LI_EG_AW"     , on="1", off="0"  ]
         Type switch : LI_EG_AO      "LI_EG_AO"       [ stateTopic="ard_state/LI_EG_AO"     ,commandTopic="ard_command/LI_EG_AO"     , on="1", off="0"  ]
