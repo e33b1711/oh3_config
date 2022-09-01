@@ -1,0 +1,11 @@
+Bridge mqtt:broker:mosquitto "Mosquitto Bridge Warp" [ host="localhost", port=1883, secure=false, clientID="openHAB2", quos=1]
+{
+
+    //power node
+    Thing topic warp "warp" @ "debug" {
+    Channels:
+        Type string : evse_raw                 "evse_raw"              [ stateTopic="warp/ULg/evse/state" ]    
+        Type number : allowed_current          "allowed_current"       [ stateTopic="warp/ULg/evse/state", transformationPattern = "JSONPATH:$.allowed_charging_current"  ]   
+    }                                                                                                                                                      	  
+}
+

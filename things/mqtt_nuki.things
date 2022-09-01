@@ -1,0 +1,48 @@
+Bridge mqtt:broker:nuki "Mosquitto Nuki" [ host="localhost", port=1883, secure=false, clientID="oh_nuki", quos=1]
+{
+    Thing topic maintainance "maintainance" @ "debug" {
+    Channels:
+        Type number   :    reset           "reset"         [ stateTopic="nuki/maintenance/reset"    ]  
+        Type number   :    uptime          "uptime"        [ stateTopic="nuki/maintenance/uptime"   ]
+    }  
+    
+    Thing topic presence "presence" @ "debug" {
+    Channels:
+        Type string   :  devices                 "devices"             [ stateTopic="nuki/presence/devices"                  ]
+    } 
+
+
+    Thing topic lock "lock" @ "debug" {
+    Channels:
+        Type string   :  action                "action"            [ stateTopic="nuki/lock/action"             ,commandTopic="nuki/lock/action"   ]
+        Type string   :  state                 "state"             [ stateTopic="nuki/lock/state"                                                 ]
+        Type string   :  trigger               "trigger"           [ stateTopic="nuki/lock/trigger"                                               ]
+        Type string   :  completionStatus      "completionStatus"  [ stateTopic="nuki/lock/completionStatus"                                      ]
+        Type string   :  doorSensorState       "doorSensorState"   [ stateTopic="nuki/lock/doorSensorState"                                       ]
+        Type string   :  log                   "log"               [ stateTopic="nuki/lock/log"                                                   ]
+        Type string   :  authorizationId       "authorizationId"   [ stateTopic="nuki/lock/authorizationId"                                       ]
+        Type string   :  authorizationName     "authorizationName" [ stateTopic="nuki/lock/authorizationName"                                     ]
+    }  
+
+ Thing topic battery "battery" @ "debug" {
+    Channels:
+        Type number   :  critical                     "critical"       [ stateTopic="nuki/battery/critical"           ]
+        Type number   :  charging                     "charging"       [ stateTopic="nuki/battery/charging"           ]
+        Type number   :  level                        "level"          [ stateTopic="nuki/battery/level"              ]
+        Type number   :  voltage                      "voltage"        [ stateTopic="nuki/battery/voltage"            ]
+        Type number   :  drain                        "drain"          [ stateTopic="nuki/battery/drain"              ]
+        Type number   :  maxTurnCurrent               "maxTurnCurrent" [ stateTopic="nuki/battery/maxTurnCurrent"     ]
+        Type number   :  lockDistance                 "lockDistance"   [ stateTopic="nuki/battery/lockDistance"       ]
+    } 
+
+Thing topic configuration "configuration" @ "debug" {
+    Channels:
+        Type number   : buttonEnabled  "buttonEnabled" [ stateTopic="nuki/configuration/buttonEnabled"   ]
+        Type number   : ledEnabled     "ledEnabled"    [ stateTopic="nuki/configuration/ledEnabled"      ]
+        Type number   : ledBrightness  "ledBrightness" [ stateTopic="nuki/configuration/ledBrightness"   ]
+        Type number   : singleLock     "singleLock"    [ stateTopic="nuki/configuration/singleLock"      ]
+        Type number   : autoUnlock     "autoUnlock"    [ stateTopic="nuki/configuration/autoUnlock"      ]
+        Type number   : autoLock       "autoLock"      [ stateTopic="nuki/configuration/autoLock"        ]
+    }      
+    
+}

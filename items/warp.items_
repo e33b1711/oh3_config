@@ -1,0 +1,3 @@
+//pure display values
+String  evse_raw                "evse_raw"                      <pressure>       (ESS)       ["Measurement", "Power"]         { channel="mqtt:topic:mosquitto:warp:evse_raw",               autoupdate="false"} 
+Number  allowed_current         "allowed_current"               <pressure>       (ESS)       ["Measurement", "Power"]         { channel="mqtt:topic:mosquitto:warp:allowed_current",        autoupdate="false"} 

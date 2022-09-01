@@ -21,10 +21,13 @@ Switch  solar2heat              "Solar2Heat: [%d]"                              
 Switch  charging                "charging: [%d]"                                            (CHARGER)   ["Switch"]                       { channel="mqtt:topic:mosquitto:power_control:charging",                 autoupdate="false"}
 Contact car_connected           "car_connected: [%d]"                                       (CHARGER)   ["Presence"]                     { channel="mqtt:topic:mosquitto:power_control:car_connected",            autoupdate="false"}
 Switch  solar2car               "Solar2Car: [%d]"                                           (CHARGER)   ["Switch"]                       { channel="mqtt:topic:mosquitto:power_control:solar2car",                autoupdate="false"}  
-Number  charger_setpoint        "Charger setpoint [%d A]"                  <pressure>       (CHARGER)   ["Setpoint"]                     { channel="mqtt:topic:mosquitto:power_control:charger_setpoint",         autoupdate="false"} 
+Number  charger_setpoint        "Charger setpoint [%d A]"                  <pressure>       (CHARGER)   ["Setpoint"]                     { channel="mqtt:topic:mosquitto:power_control:charger_setpoint",         autoupdate="false", listWidget="oh-stepper-item"[min=6, max=20, step=1]}
                                                                                                     
 //over arduino nodes                                                                                
 Number  TI_PU_O                 "Temperature (Top)    [%.1f °C]"           <temperature>    (HEAT)       ["Measurement", "Temperature"]   { channel="mqtt:topic:mosquitto:power_control:TI_PU_O",                  autoupdate="false"} 
 Number  TI_PU_U                 "Temperature (Middle) [%.1f °C]"           <temperature>    (HEAT)       ["Measurement", "Temperature"]   { channel="mqtt:topic:mosquitto:power_control:TI_PU_U",                  autoupdate="false"} 
 Number  U_EL                    "Heating Setpoint [%.1f]"                  <pressure>       (HEAT)       ["Setpoint"]                     { channel="mqtt:topic:mosquitto:power_control:U_EL",                     autoupdate="false"} 
+Number  F_HE                    "Gas Heating"                              <pressure>       (HEAT)       ["Setpoint"]                     { channel="mqtt:topic:mosquitto:power_control:F_HE",                     autoupdate="false"} 
+
+
 

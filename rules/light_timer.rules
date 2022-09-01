@@ -22,7 +22,7 @@ rule RuleLightTimer
 when
      Member of Lights changed from OFF to ON
 then
-    if (now.getHourOfDay()>22 || now.getHourOfDay < 5){ 
+    if (now.getHour()>=23 || now.getHour() <= 4){ 
         if (lightTimers.containsKey(triggeringItem.name)){
             lightTimers.get(triggeringItem.name)?.cancel()
             //logInfo("RuleLightTimers", "Canceled old timer for " + triggeringItem.name)
@@ -59,7 +59,7 @@ end
 
 rule SunsetLightsOn
 when
-	Channel 'astro:sun:home:set#event' triggered START
+	Channel 'astro:sun:local:set#event' triggered START
 then
 	SunsetLights.members.forEach [ item |
 		item.sendCommand(ON)

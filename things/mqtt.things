@@ -1,4 +1,4 @@
-Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=false, clientID="openHAB2", quos=1]
+Bridge mqtt:broker:mosquitto "Mosquitto Bridge" [ host="localhost", port=1883, secure=false, clientID="openHAB2", quos=1]
 {
 
     //power node
@@ -24,6 +24,7 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type number : U_EL                  "U_EL"                  [ stateTopic="ard_state/U_EL"                         , commandTopic="ard_command/U_EL"                 ]
         Type number : TI_PU_O               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_O"                                                                        ]
         Type number : TI_PU_U               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_U"                                                                        ]
+        Type number : F_HE                  "Gas Heater"            [ stateTopic="ard_state/F_HE"                                                                        ]
     }
 
     Thing topic arduino_lights "Arduino Lights" @ "debug" {
@@ -94,7 +95,7 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type number        : TI_UG_GA       "TI_UG_GA"                         [ stateTopic="ard_state/TI_UG_GA" ,    commandTopic="ard_command/TI_UG_GA"    ]         
         Type number        : TI_UG_LA       "TI_UG_LA"                         [ stateTopic="ard_state/TI_UG_LA" ,    commandTopic="ard_command/TI_UG_LA"    ]         
         Type number        : TI_GR          "TI_GR"                            [ stateTopic="ard_state/TI_GR"    ,    commandTopic="ard_command/TI_GR"       ]         
-        Type number        : TI_GR_A        "TI_GR_A"                          [ stateTopic="ard_state/TI_GR_A"  ,    commandTopic="ard_command/TI_GR_A"     ]         
+        Type number        : TI_AU          "TI_AU"                            [ stateTopic="ard_state/TI_AU"    ,    commandTopic="ard_command/TI_AU"       ]         
         Type number        : TI_CH 	        "TI_CH"                            [ stateTopic="ard_state/TI_CH"    ,    commandTopic="ard_command/TI_CH"       ]         
         Type number        : HI_EG_WZ       "HI_EG_WZ"                         [ stateTopic="ard_state/HI_EG_WZ" ,    commandTopic="ard_command/HI_EG_WZ"    ]         
         Type number        : HI_EG_KU       "HI_EG_KU"                         [ stateTopic="ard_state/HI_EG_KU" ,    commandTopic="ard_command/HI_EG_KU"    ]         
@@ -112,7 +113,7 @@ Bridge mqtt:broker:mosquitto "Mosquitto" [ host="localhost", port=1883, secure=f
         Type number        : HI_UG_GA       "HI_UG_GA"                         [ stateTopic="ard_state/HI_UG_GA" ,    commandTopic="ard_command/HI_UG_GA"    ]         
         Type number        : HI_UG_LA       "HI_UG_LA"                         [ stateTopic="ard_state/HI_UG_LA" ,    commandTopic="ard_command/HI_UG_LA"    ]         
         Type number        : HI_GR          "HI_GR"                            [ stateTopic="ard_state/HI_GR"    ,    commandTopic="ard_command/HI_GR"       ]         
-        Type number        : HI_GR_A        "HI_GR_A"                          [ stateTopic="ard_state/HI_GR_A"  ,    commandTopic="ard_command/HI_GR_A"     ]         
+        Type number        : HI_AU          "HI_AU"                            [ stateTopic="ard_state/HI_AU"    ,    commandTopic="ard_command/HI_AU"       ]         
         Type number        : HI_CH          "HI_CH"                            [ stateTopic="ard_state/HI_CH"    ,    commandTopic="ard_command/HI_CH"       ]         
         Type number        : U_UG_H1        "U_UG_H1"                          [ stateTopic="ard_state/U_UG_H1"  ,    commandTopic="ard_command/U_UG_H1"     ]         
         Type number        : U_UG_H2        "U_UG_H2"                          [ stateTopic="ard_state/U_UG_H2"  ,    commandTopic="ard_command/U_UG_H2"     ]         

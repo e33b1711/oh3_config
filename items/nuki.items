@@ -1,0 +1,10 @@
+Group nuki "Nuki Smart Lock Gen 2 @ FrontDoor" (EG_GA) ["Lock"] 
+
+String nuki_action          (nuki) ["Control"]          { channel="mqtt:topic:nuki:lock:action",                    autoupdate="false"}
+String nuki_state           (nuki) ["Measurement"]      { channel="mqtt:topic:nuki:lock:state",                     autoupdate="false"}
+Number nuki_critical        (nuki) ["Measurement"]      { channel="mqtt:topic:nuki:battery:critical",               autoupdate="false"}
+Number nuki_level           (nuki) ["Measurement"]      { channel="mqtt:topic:nuki:battery:level",                  autoupdate="false"}
+
+Switch nuki_unlock    "Aufsperren"      (nuki) ["Control"]  //{listWidget="oh-button"} 
+Switch nuki_unlatch   "Entriegeln"      (nuki) ["Control"]  //{listWidget="oh-button"} 
+Switch nuki_lock      "Zusperren"       (nuki) ["Control"]  //{listWidget="oh-button"} 
