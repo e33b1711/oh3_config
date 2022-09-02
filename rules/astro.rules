@@ -52,8 +52,6 @@ then
 	logInfo("GarageOuterLight", "triggered")
 	if (ItsDark.state == ON){
 		//logInfo("GarageOuterLight", "switched")
-		postUpdate(ZE_GR_2, ON)
-		postUpdate(ZE_EG_VH, ON)
 		sendCommand(ZE_GR_2, ON)
 		sendCommand(ZE_EG_VH, ON)
 	}
