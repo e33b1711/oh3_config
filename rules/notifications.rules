@@ -1,3 +1,5 @@
+import org.eclipse.smarthome.core.library.types.DecimalType
+
 var boolean NBRlocked = false
 
 rule NotificationBellRule
@@ -16,6 +18,16 @@ then
     }
 end
 
+rule NotificationWW
+when
+    Item F_WW received update
+then
+    if ((F_WW.state as DecimalType) != 0){
+        logInfo("notifications", "WW Sending notification via app.")
+        sendNotification("e33b1711@gmail.com", "Wasserstand Pumpensumpf überprüfen!")
+    }
+end
+
 
 
 rule NotificationGarageRule
@@ -29,15 +41,6 @@ rule NotificationGarageRule
 end
 
 
-//rule NotificationWW
-//when
-//  Item waterWarning changed
-//then
-//  if ((waterWarning.state as Number) != 0){
-//          //logInfo("notifications", "Sending notification via app.")
-//          sendNotification("e33b1711@gmail.com", "Wasserstand Pumpensumpf!!")
-//  }
-//end
 
 
 

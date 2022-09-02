@@ -24,7 +24,8 @@ Bridge mqtt:broker:mosquitto "Mosquitto Bridge" [ host="localhost", port=1883, s
         Type number : U_EL                  "U_EL"                  [ stateTopic="ard_state/U_EL"                         , commandTopic="ard_command/U_EL"                 ]
         Type number : TI_PU_O               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_O"                                                                        ]
         Type number : TI_PU_U               "TI_PU_O"               [ stateTopic="ard_state/TI_PU_U"                                                                        ]
-        Type number : F_HE                  "Gas Heater"            [ stateTopic="ard_state/F_HE"                                                                        ]
+        Type number : F_HE                  "Gas Heater"            [ stateTopic="ard_state/F_HE"                                                                           ]
+        Type number : F_WW                  "Water Warning"         [ stateTopic="ard_state/F_WW"                                                                           ]
     }
 
     Thing topic arduino_lights "Arduino Lights" @ "debug" {
