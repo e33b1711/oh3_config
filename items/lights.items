@@ -1,5 +1,7 @@
 Group Lights
 
+Switch night_timer      "10 min Timer Nachts"                                                                   
+
 Switch LI_EG_WZ         "Decke Mitte"                                       (Lights, EG_WZ)                               ["Lightbulb"]               { channel="mqtt:topic:mosquitto:arduino_lights:LI_EG_WZ",        autoupdate="false"}
 Switch LI_EG_WZ_L1      "Decke vorn"                                        (Lights, EG_WZ)                               ["Lightbulb"]               { channel="mqtt:topic:mosquitto:arduino_lights:LI_EG_WZ_L1",     autoupdate="false"}
 Switch LI_EG_WZ_L2      "Decke hinten"                                      (Lights, EG_WZ)                               ["Lightbulb"]               { channel="mqtt:topic:mosquitto:arduino_lights:LI_EG_WZ_L2",     autoupdate="false"}
