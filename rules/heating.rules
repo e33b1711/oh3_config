@@ -61,7 +61,7 @@ then
     var Number temp_soll = tsItem.state as DecimalType
     //logInfo("HeatingControllerRule", "temp_soll: " + temp_soll.toString())
 
-    var Number u_default = 8 
+    var Number u_default = 4 
     
     
 
@@ -73,10 +73,11 @@ then
     if((temp_ist<1) || (temp_ist>35)){
         u_nxt=u_default
     }else{
-        if (temp_diff>1){u_nxt=4.0}
-        if (temp_diff>2){u_nxt=0.0} 
-        if (temp_diff<-1){u_nxt=12.0}
-        if (temp_diff<-2){u_nxt=15.0}
+        if (temp_diff>0.5){u_nxt=2.0}
+        if (temp_diff>1){u_nxt=0.0} 
+        if (temp_diff<-1){u_nxt=6.0}
+        if (temp_diff<-2){u_nxt=10.0}
+        if (temp_diff<-3){u_nxt=15.0}
     }
     
     if(heat_control.state==OFF){
