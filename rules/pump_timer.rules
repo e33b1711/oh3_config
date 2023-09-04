@@ -11,7 +11,7 @@ then
         pumpTimers.get(triggeringItem.name)?.cancel()
         //logInfo("RulepumpTimer", "Canceled old timer for " + triggeringItem.name)
     }
-    pumpTimers.put( triggeringItem.name, createTimer(now.plusSeconds(300), [|
+    pumpTimers.put( triggeringItem.name, createTimer(now.plusSeconds(3000), [|
         triggeringItem.sendCommand(OFF)
         pumpTimers.put(triggeringItem.name, null) // remove the timer from the Hashmap
         //logInfo("RulepumpTimer", "Destroyed timer for " + triggeringItem.name)
