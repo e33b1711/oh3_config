@@ -4,6 +4,12 @@ Bridge mqtt:broker:mosquitto "Mosquitto Bridge" [ host="localhost", port=1883, s
     //power node
     Thing topic power_control "Power Control" @ "debug" {
     Channels:
+		Type number : leaf_healthy          "leaf_healthy"          [ stateTopic="power_state/leaf_healthy"                                                                 ]    
+        Type string : leaf_timestamp        "leaf_timestamp"        [ stateTopic="power_state/leaf_timestamp"                                                               ]   
+        Type number : leaf_connected        "leaf_connected"        [ stateTopic="power_state/leaf_connected"                                                               ]
+        Type number : leaf_charging         "leaf_charging"         [ stateTopic="power_state/leaf_charging"                                                                ]
+        Type number : leaf_SOC              "leaf_SOC"              [ stateTopic="power_state/leaf_SOC"                                                                     ]
+        Type number : leaf_range            "leaf_range"            [ stateTopic="power_state/leaf_range"                                                                   ]
         Type number : grid_power            "grid_power"            [ stateTopic="power_state/grid_power"                                                                   ]    
         Type number : solar_power           "solar_power"           [ stateTopic="power_state/solar_power"                                                                  ]   
         Type number : battery_power         "battery_power"         [ stateTopic="power_state/battery_power"                                                                ]
